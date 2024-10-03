@@ -40,6 +40,44 @@ Widget::Widget(QWidget *parent)
                                    "QLineEdit::placeholder { "                 // 占位文本样式
                                    "    color: #999; "                         // 占位文本颜色
                                    "}");
+    ui->reg_pushButton->setStyleSheet("QPushButton {"
+                                       "   background-color: #1e1e1e;"
+                                       "   border: none;"
+                                       "   color: white;"
+                                       "   padding: 10px;"
+                                       "   font-size: 16px;"
+                                       "   border-radius: 5px;"
+                                       "   min-width: 100px;"
+                                       "}"
+                                       "QPushButton:hover {"
+                                       "   background-color: #45a049;"
+                                       "}"
+                                       "QPushButton:pressed {"
+                                       "   background-color: #3e8e41;"
+                                       "}"
+                                       "QPushButton:disabled {"
+                                       "   background-color: #A9A9A9;"
+                                       "   color: #7D7D7D;"
+                                       "}");
+    ui->login_pushButton->setStyleSheet("QPushButton {"
+                                       "   background-color: #1e1e1e;"
+                                       "   border: none;"
+                                       "   color: white;"
+                                       "   padding: 10px;"
+                                       "   font-size: 16px;"
+                                       "   border-radius: 5px;"
+                                       "   min-width: 100px;"
+                                       "}"
+                                       "QPushButton:hover {"
+                                       "   background-color: #45a049;"
+                                       "}"
+                                       "QPushButton:pressed {"
+                                       "   background-color: #3e8e41;"
+                                       "}"
+                                       "QPushButton:disabled {"
+                                       "   background-color: #A9A9A9;"
+                                       "   color: #7D7D7D;"
+                                       "}");
     ui->tip_label->setStyleSheet("QLabel { color : red; font-size: 18px; }");
     connect(ui->reg_pushButton,&QPushButton::clicked,this,&Widget::toRegWidget);
 }

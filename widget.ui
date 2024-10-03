@@ -38,7 +38,7 @@
      <x>0</x>
      <y>170</y>
      <width>301</width>
-     <height>271</height>
+     <height>287</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -233,6 +233,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>登录</string>
