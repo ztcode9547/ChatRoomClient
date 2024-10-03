@@ -17,12 +17,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
+    regwidget.cpp \
     widget.cpp
 
 HEADERS += \
+    regwidget.h \
     widget.h
 
 FORMS += \
+    regwidget.ui \
     widget.ui
 
 # Default rules for deployment.
@@ -31,4 +34,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    qrc.qrc
+    myqrc.qrc

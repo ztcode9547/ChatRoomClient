@@ -22,14 +22,17 @@
      <height>140</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/image/image/123.png);</string>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -87,7 +90,7 @@
        </font>
       </property>
       <property name="text">
-       <string>密码输入错误</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

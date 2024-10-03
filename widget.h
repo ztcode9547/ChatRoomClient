@@ -17,5 +17,7 @@ public:
 
 private:
     Ui::Widget *ui;
+public slots:
+    void toRegWidget();
 };
 #endif // WIDGET_H

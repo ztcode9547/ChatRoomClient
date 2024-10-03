@@ -3,6 +3,7 @@
 #include <QPixmap>
 #include <QSize>
 #include <QLabel>
+#include <regwidget.h>
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -40,19 +41,17 @@ Widget::Widget(QWidget *parent)
                                    "    color: #999; "                         // 占位文本颜色
                                    "}");
     ui->tip_label->setStyleSheet("QLabel { color : red; font-size: 18px; }");
-    ui->image_label->setAlignment(Qt::AlignCenter);
-    ui->image_label->setScaledContents(true);
-    QPixmap pixmap(":/登录窗口企鹅");
-    if (!pixmap.isNull())
-    {
-        ui->image_label->setPixmap(pixmap);
-        ui->image_label->resize(200, 140); // 设置 QLabel 尺寸
-    }
-
-
+    connect(ui->reg_pushButton,&QPushButton::clicked,this,&Widget::toRegWidget);
 }
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::toRegWidget()
+{
+    regWidget* reg=new regWidget();
+    this->hide();
+    reg->show();
 }
 
