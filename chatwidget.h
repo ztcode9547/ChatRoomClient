@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::chatWidget *ui;
+public slots:
+    void updateUserHandle(const QJsonArray& ret);
 };
 
 #endif // CHATWIDGET_H

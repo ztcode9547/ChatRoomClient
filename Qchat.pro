@@ -1,5 +1,4 @@
-QT       += core gui
-
+QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -16,17 +15,35 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chatwidget.cpp \
+    loginWidget.cpp \
     main.cpp \
-    regwidget.cpp \
-    widget.cpp
+    regWidget.cpp \
+    tcpWidget.cpp \
+    tcpclient.cpp
 
 HEADERS += \
-    regwidget.h \
-    widget.h
+    chatwidget.h \
+    global.h \
+    loginWidget.h \
+    regWidget.h \
+    tcpWidget.h \
+    tcpclient.h
 
 FORMS += \
+    chatwidget.ui \
+    loginWidget.ui \
     regwidget.ui \
-    widget.ui
+    tcpWidget.ui
+
+
+# 设置输出路径
+
+  DESTDIR = .
+
+
+
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

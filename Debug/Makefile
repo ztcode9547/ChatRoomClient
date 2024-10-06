@@ -235,6 +235,7 @@ Makefile: ../Qchat.pro D:/Qt/5.12.9/mingw73_32/mkspecs/win32-g++/qmake.conf D:/Q
 		../Qchat.pro \
 		D:/Qt/5.12.9/mingw73_32/lib/Qt5Widgets.prl \
 		D:/Qt/5.12.9/mingw73_32/lib/Qt5Gui.prl \
+		D:/Qt/5.12.9/mingw73_32/lib/Qt5Network.prl \
 		D:/Qt/5.12.9/mingw73_32/lib/Qt5Core.prl \
 		D:/Qt/5.12.9/mingw73_32/lib/qtmain.prl
 	$(QMAKE) -o Makefile ..\Qchat.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -410,6 +411,7 @@ D:/Qt/5.12.9/mingw73_32/mkspecs/features/lex.prf:
 ../Qchat.pro:
 D:/Qt/5.12.9/mingw73_32/lib/Qt5Widgets.prl:
 D:/Qt/5.12.9/mingw73_32/lib/Qt5Gui.prl:
+D:/Qt/5.12.9/mingw73_32/lib/Qt5Network.prl:
 D:/Qt/5.12.9/mingw73_32/lib/Qt5Core.prl:
 D:/Qt/5.12.9/mingw73_32/lib/qtmain.prl:
 qmake: FORCE

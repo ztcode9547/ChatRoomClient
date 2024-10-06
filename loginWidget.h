@@ -1,23 +1,29 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef LOGINWIDGET_H
+#define LOGINWIDGET_H
 
 #include <QWidget>
-
+#include <QTcpSocket>
+#include "global.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
 
-class Widget : public QWidget
+class loginWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr);
-    ~Widget();
-
+    loginWidget(QWidget *parent = nullptr);
+    ~loginWidget();
+signals:
+    void loginWidget_to_regWidget(const int singalType);
+    void loginWidget_to_chatWidget(const QJsonArray onlineuser);
 private:
     Ui::Widget *ui;
-public slots:
+private slots:
     void toRegWidget();
+    void showTipLabel(const int singalType);
+    void launchLogin();
+    void loginHandle(const QJsonObject loginMessage);
 };
 #endif // WIDGET_H

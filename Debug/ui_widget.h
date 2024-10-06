@@ -25,7 +25,7 @@ class Ui_Widget
 {
 public:
     QLabel *image_label;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer_4;
     QSpacerItem *verticalSpacer_5;
@@ -52,11 +52,12 @@ public:
         image_label = new QLabel(Widget);
         image_label->setObjectName(QString::fromUtf8("image_label"));
         image_label->setGeometry(QRect(50, 10, 200, 140));
+        image_label->setStyleSheet(QString::fromUtf8("border-image: url(:/image/image/123.png);"));
         image_label->setAlignment(Qt::AlignCenter);
-        widget = new QWidget(Widget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(0, 170, 301, 271));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(Widget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 170, 301, 287));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(10, 10, 10, 10);
         verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -67,7 +68,7 @@ public:
 
         verticalLayout->addItem(verticalSpacer_5);
 
-        tip_label = new QLabel(widget);
+        tip_label = new QLabel(layoutWidget);
         tip_label->setObjectName(QString::fromUtf8("tip_label"));
         QFont font;
         font.setPointSize(17);
@@ -86,14 +87,14 @@ public:
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(10, 10, 10, 10);
-        id_label = new QLabel(widget);
+        id_label = new QLabel(layoutWidget);
         id_label->setObjectName(QString::fromUtf8("id_label"));
         id_label->setFont(font);
         id_label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         horizontalLayout->addWidget(id_label);
 
-        id_lineEdit = new QLineEdit(widget);
+        id_lineEdit = new QLineEdit(layoutWidget);
         id_lineEdit->setObjectName(QString::fromUtf8("id_lineEdit"));
         id_lineEdit->setMinimumSize(QSize(0, 30));
 
@@ -110,13 +111,13 @@ public:
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(10, 10, 10, 10);
-        password_label = new QLabel(widget);
+        password_label = new QLabel(layoutWidget);
         password_label->setObjectName(QString::fromUtf8("password_label"));
         password_label->setFont(font);
 
         horizontalLayout_2->addWidget(password_label);
 
-        password_lineEdit = new QLineEdit(widget);
+        password_lineEdit = new QLineEdit(layoutWidget);
         password_lineEdit->setObjectName(QString::fromUtf8("password_lineEdit"));
         password_lineEdit->setMinimumSize(QSize(50, 30));
 
@@ -129,9 +130,10 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
-        login_pushButton = new QPushButton(widget);
+        login_pushButton = new QPushButton(layoutWidget);
         login_pushButton->setObjectName(QString::fromUtf8("login_pushButton"));
         login_pushButton->setFont(font);
+        login_pushButton->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout->addWidget(login_pushButton);
 
@@ -143,7 +145,7 @@ public:
 
         verticalLayout->addItem(verticalSpacer_7);
 
-        reg_pushButton = new QPushButton(widget);
+        reg_pushButton = new QPushButton(layoutWidget);
         reg_pushButton->setObjectName(QString::fromUtf8("reg_pushButton"));
         reg_pushButton->setFont(font);
 
@@ -158,8 +160,8 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Qchat", nullptr));
-        image_label->setText(QApplication::translate("Widget", "TextLabel", nullptr));
-        tip_label->setText(QApplication::translate("Widget", "\345\257\206\347\240\201\350\276\223\345\205\245\351\224\231\350\257\257", nullptr));
+        image_label->setText(QString());
+        tip_label->setText(QString());
         id_label->setText(QApplication::translate("Widget", "\350\264\246\345\217\267\357\274\232", nullptr));
         password_label->setText(QApplication::translate("Widget", "\345\257\206\347\240\201\357\274\232", nullptr));
         login_pushButton->setText(QApplication::translate("Widget", "\347\231\273\345\275\225", nullptr));

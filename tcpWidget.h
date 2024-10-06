@@ -1,22 +1,34 @@
-#ifndef TCPLOGIN_H
-#define TCPLOGIN_H
+#ifndef TCPWIDGET_H
+#define TCPWIDGET_H
 
 #include <QWidget>
-
+#include "loginWidget.h"
+#include "regWidget.h"
+#include <chatwidget.h>
 namespace Ui {
 class tcplogin;
 }
 
-class tcplogin : public QWidget
+class tcpWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit tcplogin(QWidget *parent = nullptr);
-    ~tcplogin();
-
+    explicit tcpWidget(QWidget *parent = nullptr);
+    ~tcpWidget();
 private:
     Ui::tcplogin *ui;
+    loginWidget* _loginWidget;
+    regWidget* _regWidget;
+    chatWidget* _chatWidget;
+
+signals:
+    void changeRegWidgetTip();
+    void updateUserLists(const QJsonArray& ret);
+private slots:
+    void loginServer();
+    void signalHandle(const int singalType);
+    void toChatWidget(const QJsonArray ret);
 };
 
-#endif // TCPLOGIN_H
+#endif

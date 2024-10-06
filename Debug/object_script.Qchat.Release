@@ -1,0 +1,12 @@
+release/chatwidget.o
+release/loginWidget.o
+release/main.o
+release/regWidget.o
+release/tcpWidget.o
+release/tcpclient.o
+release/qrc_myqrc.o
+release/moc_chatwidget.o
+release/moc_loginWidget.o
+release/moc_regWidget.o
+release/moc_tcpWidget.o
+release/moc_tcpclient.o

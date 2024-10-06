@@ -1,10 +1,12 @@
-#include "widget.h"
+#include "loginWidget.h"
 #include "ui_widget.h"
 #include <QPixmap>
 #include <QSize>
 #include <QLabel>
-#include <regwidget.h>
-Widget::Widget(QWidget *parent)
+#include <regWidget.h>
+#include <tcpclient.h>
+#include <QDebug>
+loginWidget::loginWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
@@ -79,17 +81,102 @@ Widget::Widget(QWidget *parent)
                                        "   color: #7D7D7D;"
                                        "}");
     ui->tip_label->setStyleSheet("QLabel { color : red; font-size: 18px; }");
-    connect(ui->reg_pushButton,&QPushButton::clicked,this,&Widget::toRegWidget);
+    this->setStyleSheet("background-color: #ADD8E6;");
+    this->setFixedSize(300, 450); // 设置窗口的固定大小
+    this->setWindowIcon(QIcon(":/image/image/QQ.png"));
+    connect(ui->reg_pushButton,&QPushButton::clicked,this,&loginWidget::toRegWidget);
+    connect(&tcpclient::getInstance(),&tcpclient::connectedToServer,this,&loginWidget::showTipLabel);
+    connect(&tcpclient::getInstance(),&tcpclient::regWidget_to_loginWidget,this,&loginWidget::showTipLabel);
+    connect(ui->login_pushButton,&QPushButton::clicked,this,&loginWidget::launchLogin);
+    connect(&tcpclient::getInstance(),&tcpclient::loginRespone,this,&loginWidget::loginHandle);
 }
-Widget::~Widget()
+loginWidget::~loginWidget()
 {
     delete ui;
 }
-
-void Widget::toRegWidget()
+void loginWidget::toRegWidget()
 {
-    regWidget* reg=new regWidget();
-    this->hide();
-    reg->show();
+    emit loginWidget_to_regWidget(signal::loginWidget_to_regWidget);
 }
+void loginWidget::showTipLabel(const int singalType)
+{
+    if(singalType==signal::connected_to_server_signal)
+    {
+        ui->tip_label->setText("成功连接服务器");
+    }
+    else if(singalType==signal::reg_sucess)
+    {
+        ui->tip_label->setText("注册成功");
+    }
+}
+
+void loginWidget::launchLogin()
+{
+    if(ui->password_lineEdit->text().isEmpty()||ui->id_lineEdit->text().isEmpty())
+    {
+        ui->tip_label->setText("id或密码不能为空");
+        return ;
+    }
+    QString id=ui->id_lineEdit->text();
+    QString password=ui->password_lineEdit->text();
+    //组成成json，然后发送
+    QJsonObject jsonObject;
+    jsonObject["msgid"] = msgid::LOGIN_MSG;
+    jsonObject["id"] =id ;
+    jsonObject["password"] = password;
+    QJsonDocument jsonDocument(jsonObject);
+    QString jsonString = jsonDocument.toJson(QJsonDocument::Compact);
+    QByteArray byteArray = jsonString.toUtf8();
+    tcpclient::getInstance().sendData(byteArray);
+}
+void loginWidget::loginHandle(const QJsonObject loginMessage)
+{
+    int erro = loginMessage["error"].toInt();
+    if(erro==0)
+    {
+        QJsonArray onlineUser=loginMessage["onlineuser"].toArray();
+        emit loginWidget_to_chatWidget(onlineUser);
+    }
+    else if(erro==1)
+    {
+        QString erroMessage = loginMessage["errormsg"].toString();
+        ui->tip_label->setText(erroMessage);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

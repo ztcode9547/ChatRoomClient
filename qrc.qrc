@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file alias="登录窗口的图标">image/QQ.png</file>
-        <file>image/123.png</file>
-    </qresource>
-</RCC>

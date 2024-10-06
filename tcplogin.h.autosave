@@ -1,0 +1,30 @@
+#ifndef TCPLOGIN_H
+#define TCPLOGIN_H
+
+#include <QWidget>
+#include <QStackedWidget>
+#include "widget.h"
+#include "regwidget.h"
+namespace Ui {
+class tcplogin;
+}
+
+class tcplogin : public QWidget
+{
+    Q_OBJECT
+
+public:
+    explicit tcplogin(QWidget *parent = nullptr);
+    ~tcplogin();
+
+private:
+    Ui::tcplogin *ui;
+    QStackedWidget *stackedWidget;
+    Widget *loginWidget;
+    regWidget *regWID
+private slots:
+    void loginServer();
+    void showTipLabel(const int singalType);
+};
+
+#endif // TCPLOGIN_H

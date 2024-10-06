@@ -14,9 +14,16 @@ class regWidget : public QWidget
 public:
     explicit regWidget(QWidget *parent = nullptr);
     ~regWidget();
-
+signals:
+    void backLoginWidget(const int singalType);
 private:
     Ui::regWidget *ui;
+private slots:
+    void regHandle();
+    void showIDHandle(const QByteArray userid);
+    void returmLogin();
+public slots:
+    void tipLabel();
 };
 
 #endif // REGWIDGET_H

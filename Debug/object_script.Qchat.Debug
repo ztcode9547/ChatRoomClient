@@ -1,0 +1,12 @@
+debug/chatwidget.o
+debug/loginWidget.o
+debug/main.o
+debug/regWidget.o
+debug/tcpWidget.o
+debug/tcpclient.o
+debug/qrc_myqrc.o
+debug/moc_chatwidget.o
+debug/moc_loginWidget.o
+debug/moc_regWidget.o
+debug/moc_tcpWidget.o
+debug/moc_tcpclient.o
