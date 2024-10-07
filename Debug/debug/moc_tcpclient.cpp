@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_tcpclient_t {
-    QByteArrayData data[20];
-    char stringdata0[263];
+    QByteArrayData data[22];
+    char stringdata0[287];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,23 +44,25 @@ QT_MOC_LITERAL(9, 105, 12), // "loginMessage"
 QT_MOC_LITERAL(10, 118, 22), // "disconnectedFromServer"
 QT_MOC_LITERAL(11, 141, 13), // "errorOccurred"
 QT_MOC_LITERAL(12, 155, 15), // "updateUserLists"
-QT_MOC_LITERAL(13, 171, 3), // "ret"
-QT_MOC_LITERAL(14, 175, 11), // "receiveData"
-QT_MOC_LITERAL(15, 187, 11), // "onConnected"
-QT_MOC_LITERAL(16, 199, 14), // "onDisconnected"
-QT_MOC_LITERAL(17, 214, 7), // "onError"
-QT_MOC_LITERAL(18, 222, 28), // "QAbstractSocket::SocketError"
-QT_MOC_LITERAL(19, 251, 11) // "socketError"
+QT_MOC_LITERAL(13, 171, 2), // "js"
+QT_MOC_LITERAL(14, 174, 12), // "groupChatRes"
+QT_MOC_LITERAL(15, 187, 11), // "UserName_ID"
+QT_MOC_LITERAL(16, 199, 11), // "receiveData"
+QT_MOC_LITERAL(17, 211, 11), // "onConnected"
+QT_MOC_LITERAL(18, 223, 14), // "onDisconnected"
+QT_MOC_LITERAL(19, 238, 7), // "onError"
+QT_MOC_LITERAL(20, 246, 28), // "QAbstractSocket::SocketError"
+QT_MOC_LITERAL(21, 275, 11) // "socketError"
 
     },
     "tcpclient\0UserID\0\0userid\0connectedToServer\0"
     "singalType\0changeWidget\0"
     "regWidget_to_loginWidget\0loginRespone\0"
     "loginMessage\0disconnectedFromServer\0"
-    "errorOccurred\0updateUserLists\0ret\0"
-    "receiveData\0onConnected\0onDisconnected\0"
-    "onError\0QAbstractSocket::SocketError\0"
-    "socketError"
+    "errorOccurred\0updateUserLists\0js\0"
+    "groupChatRes\0UserName_ID\0receiveData\0"
+    "onConnected\0onDisconnected\0onError\0"
+    "QAbstractSocket::SocketError\0socketError"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,28 +72,30 @@ static const uint qt_meta_data_tcpclient[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       8,       // signalCount
+      10,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   74,    2, 0x06 /* Public */,
-       4,    1,   77,    2, 0x06 /* Public */,
-       6,    1,   80,    2, 0x06 /* Public */,
-       7,    1,   83,    2, 0x06 /* Public */,
-       8,    1,   86,    2, 0x06 /* Public */,
-      10,    0,   89,    2, 0x06 /* Public */,
-      11,    1,   90,    2, 0x06 /* Public */,
-      12,    1,   93,    2, 0x06 /* Public */,
+       1,    1,   84,    2, 0x06 /* Public */,
+       4,    1,   87,    2, 0x06 /* Public */,
+       6,    1,   90,    2, 0x06 /* Public */,
+       7,    1,   93,    2, 0x06 /* Public */,
+       8,    1,   96,    2, 0x06 /* Public */,
+      10,    0,   99,    2, 0x06 /* Public */,
+      11,    1,  100,    2, 0x06 /* Public */,
+      12,    1,  103,    2, 0x06 /* Public */,
+      14,    1,  106,    2, 0x06 /* Public */,
+      15,    1,  109,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      14,    0,   96,    2, 0x08 /* Private */,
-      15,    0,   97,    2, 0x08 /* Private */,
-      16,    0,   98,    2, 0x08 /* Private */,
-      17,    1,   99,    2, 0x08 /* Private */,
+      16,    0,  112,    2, 0x08 /* Private */,
+      17,    0,  113,    2, 0x08 /* Private */,
+      18,    0,  114,    2, 0x08 /* Private */,
+      19,    1,  115,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QByteArray,    3,
@@ -101,13 +105,15 @@ static const uint qt_meta_data_tcpclient[] = {
     QMetaType::Void, QMetaType::QJsonObject,    9,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    5,
-    QMetaType::Void, QMetaType::QJsonArray,   13,
+    QMetaType::Void, QMetaType::QJsonObject,   13,
+    QMetaType::Void, QMetaType::QJsonObject,   13,
+    QMetaType::Void, QMetaType::QJsonObject,   13,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 18,   19,
+    QMetaType::Void, 0x80000000 | 20,   21,
 
        0        // eod
 };
@@ -125,17 +131,19 @@ void tcpclient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 4: _t->loginRespone((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
         case 5: _t->disconnectedFromServer(); break;
         case 6: _t->errorOccurred((*reinterpret_cast< const int(*)>(_a[1]))); break;
-        case 7: _t->updateUserLists((*reinterpret_cast< const QJsonArray(*)>(_a[1]))); break;
-        case 8: _t->receiveData(); break;
-        case 9: _t->onConnected(); break;
-        case 10: _t->onDisconnected(); break;
-        case 11: _t->onError((*reinterpret_cast< QAbstractSocket::SocketError(*)>(_a[1]))); break;
+        case 7: _t->updateUserLists((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
+        case 8: _t->groupChatRes((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
+        case 9: _t->UserName_ID((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
+        case 10: _t->receiveData(); break;
+        case 11: _t->onConnected(); break;
+        case 12: _t->onDisconnected(); break;
+        case 13: _t->onError((*reinterpret_cast< QAbstractSocket::SocketError(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 11:
+        case 13:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -195,9 +203,23 @@ void tcpclient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
         {
-            using _t = void (tcpclient::*)(const QJsonArray & );
+            using _t = void (tcpclient::*)(const QJsonObject & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&tcpclient::updateUserLists)) {
                 *result = 7;
+                return;
+            }
+        }
+        {
+            using _t = void (tcpclient::*)(const QJsonObject );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&tcpclient::groupChatRes)) {
+                *result = 8;
+                return;
+            }
+        }
+        {
+            using _t = void (tcpclient::*)(const QJsonObject );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&tcpclient::UserName_ID)) {
+                *result = 9;
                 return;
             }
         }
@@ -233,13 +255,13 @@ int tcpclient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }
@@ -293,10 +315,24 @@ void tcpclient::errorOccurred(const int _t1)
 }
 
 // SIGNAL 7
-void tcpclient::updateUserLists(const QJsonArray & _t1)
+void tcpclient::updateUserLists(const QJsonObject & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 7, _a);
+}
+
+// SIGNAL 8
+void tcpclient::groupChatRes(const QJsonObject _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 8, _a);
+}
+
+// SIGNAL 9
+void tcpclient::UserName_ID(const QJsonObject _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 9, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

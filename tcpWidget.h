@@ -24,11 +24,11 @@ private:
 
 signals:
     void changeRegWidgetTip();
-    void updateUserLists(const QJsonArray& ret);
+    void updateUserLists(const QJsonObject& js);
 private slots:
     void loginServer();
     void signalHandle(const int singalType);
-    void toChatWidget(const QJsonArray ret);
+    void toChatWidget(const QJsonObject ret);
 };
 
 #endif

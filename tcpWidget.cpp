@@ -104,11 +104,11 @@ void tcpWidget::signalHandle(const int singalType)
     }
 }
 
-void tcpWidget::toChatWidget(const QJsonArray ret)
+void tcpWidget::toChatWidget(const QJsonObject js)
 {
     _chatWidget->show();
     _loginWidget->hide();
-    emit updateUserLists(ret);
+    emit updateUserLists(js);
 }
 
 

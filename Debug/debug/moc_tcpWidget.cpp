@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_tcpWidget_t {
-    QByteArrayData data[9];
-    char stringdata0[99];
+    QByteArrayData data[10];
+    char stringdata0[102];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,16 +35,18 @@ QT_MOC_LITERAL(0, 0, 9), // "tcpWidget"
 QT_MOC_LITERAL(1, 10, 18), // "changeRegWidgetTip"
 QT_MOC_LITERAL(2, 29, 0), // ""
 QT_MOC_LITERAL(3, 30, 15), // "updateUserLists"
-QT_MOC_LITERAL(4, 46, 3), // "ret"
-QT_MOC_LITERAL(5, 50, 11), // "loginServer"
-QT_MOC_LITERAL(6, 62, 12), // "signalHandle"
-QT_MOC_LITERAL(7, 75, 10), // "singalType"
-QT_MOC_LITERAL(8, 86, 12) // "toChatWidget"
+QT_MOC_LITERAL(4, 46, 2), // "js"
+QT_MOC_LITERAL(5, 49, 11), // "loginServer"
+QT_MOC_LITERAL(6, 61, 12), // "signalHandle"
+QT_MOC_LITERAL(7, 74, 10), // "singalType"
+QT_MOC_LITERAL(8, 85, 12), // "toChatWidget"
+QT_MOC_LITERAL(9, 98, 3) // "ret"
 
     },
     "tcpWidget\0changeRegWidgetTip\0\0"
-    "updateUserLists\0ret\0loginServer\0"
-    "signalHandle\0singalType\0toChatWidget"
+    "updateUserLists\0js\0loginServer\0"
+    "signalHandle\0singalType\0toChatWidget\0"
+    "ret"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,12 +74,12 @@ static const uint qt_meta_data_tcpWidget[] = {
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QJsonArray,    4,
+    QMetaType::Void, QMetaType::QJsonObject,    4,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    7,
-    QMetaType::Void, QMetaType::QJsonArray,    4,
+    QMetaType::Void, QMetaType::QJsonObject,    9,
 
        0        // eod
 };
@@ -89,10 +91,10 @@ void tcpWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->changeRegWidgetTip(); break;
-        case 1: _t->updateUserLists((*reinterpret_cast< const QJsonArray(*)>(_a[1]))); break;
+        case 1: _t->updateUserLists((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
         case 2: _t->loginServer(); break;
         case 3: _t->signalHandle((*reinterpret_cast< const int(*)>(_a[1]))); break;
-        case 4: _t->toChatWidget((*reinterpret_cast< const QJsonArray(*)>(_a[1]))); break;
+        case 4: _t->toChatWidget((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -105,7 +107,7 @@ void tcpWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
         {
-            using _t = void (tcpWidget::*)(const QJsonArray & );
+            using _t = void (tcpWidget::*)(const QJsonObject & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&tcpWidget::updateUserLists)) {
                 *result = 1;
                 return;
@@ -161,7 +163,7 @@ void tcpWidget::changeRegWidgetTip()
 }
 
 // SIGNAL 1
-void tcpWidget::updateUserLists(const QJsonArray & _t1)
+void tcpWidget::updateUserLists(const QJsonObject & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);

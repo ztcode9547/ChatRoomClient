@@ -17,8 +17,17 @@ public:
 
 private:
     Ui::chatWidget *ui;
+    QString m_name;
+    QString m_id;
 public slots:
-    void updateUserHandle(const QJsonArray& ret);
+    void updateUserHandle(const QJsonObject& js);
+private slots:
+    void on_launch_pushButton_clicked();
+    void groupChatHandle(const QJsonObject& js);
+    void getUserName_ID(const QJsonObject& js);
+    void on_picture_pushButton_clicked();
+private:
+    void showPicture(const QJsonObject& js);
 };
 
 #endif // CHATWIDGET_H

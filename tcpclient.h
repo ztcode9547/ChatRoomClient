@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QTcpSocket>
 #include "global.h"
+#include <QFile>
+#include <QTextStream>
 class tcpclient:public QObject
 {
     Q_OBJECT
@@ -24,7 +26,9 @@ signals:
     void loginRespone(const QJsonObject loginMessage);
     void disconnectedFromServer();
     void errorOccurred(const int singalType);
-    void updateUserLists(const QJsonArray& ret);
+    void updateUserLists(const QJsonObject& js);
+    void groupChatRes(const QJsonObject js);
+    void UserName_ID(const QJsonObject js);
 private slots:
     void receiveData();//加入粘包的处理的接收函数，基于长度前缀协议
     void onConnected();
@@ -33,7 +37,7 @@ private slots:
 private:
     QTcpSocket* m_socket;
     void processPacket(QByteArray packet);
-
+    void writeLogMessage(const QString &logMessage);
 };
 
 #endif // TCPCLIENT_H

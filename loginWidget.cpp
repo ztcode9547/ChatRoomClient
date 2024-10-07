@@ -134,8 +134,7 @@ void loginWidget::loginHandle(const QJsonObject loginMessage)
     int erro = loginMessage["error"].toInt();
     if(erro==0)
     {
-        QJsonArray onlineUser=loginMessage["onlineuser"].toArray();
-        emit loginWidget_to_chatWidget(onlineUser);
+        emit loginWidget_to_chatWidget(loginMessage);
     }
     else if(erro==1)
     {

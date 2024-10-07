@@ -1,5 +1,12 @@
 #include "tcpclient.h"
-
+#include <QDebug>
+#include <QFile>
+#include <QTextStream>
+#include <iostream>
+#include <QDateTime>
+#include <QString>
+#include <QDebug>
+#include <QtEndian>
 tcpclient::tcpclient():m_socket(new QTcpSocket())
 {
     connect(m_socket, &QTcpSocket::readyRead, this, &tcpclient::receiveData);
@@ -65,10 +72,13 @@ void tcpclient::onError(QAbstractSocket::SocketError socketError)
 }
 void tcpclient::sendData(const QByteArray& data)
 {
+    writeLogMessage(QString::fromUtf8(data));
     QByteArray dataWithLength;
     // 计算数据长度并转换为字节数组
-    quint32 length = data.size();
-    dataWithLength.append(reinterpret_cast<const char*>(&length), sizeof(length));
+    int length = data.size();
+    writeLogMessage(("发送了:"+QString::number(length)));
+    int networkLength  = qToBigEndian(length);
+    dataWithLength.append(reinterpret_cast<const char*>(&networkLength ), sizeof(networkLength));
     dataWithLength.append(data);
     m_socket->write(dataWithLength); // 发送数据
 }
@@ -89,9 +99,10 @@ void tcpclient::receiveData()
             if (static_cast<quint32>(buffer.size()) < sizeof(quint32) + length) {
                 break; // 如果不够长，则等待更多数据
             }
-
+            writeLogMessage(("接受了:"+QString::number(length)));
             // 提取完整的数据包
             QByteArray packet = buffer.mid(sizeof(quint32), length);
+            writeLogMessage(QString::fromUtf8(packet));
             // 处理数据包
             processPacket(packet);
             // 移除已处理的数据
@@ -115,16 +126,43 @@ void tcpclient::processPacket(QByteArray packet)
     else if(msgid==msgid::LOGIN_MSG_RESPONE)
     {
         emit loginRespone(jsonObject);
+        QJsonObject ret;
+        ret["name"]=jsonObject["name"];
+        ret["id"]=jsonObject["id"];
+        emit UserName_ID(ret);
+
     }
     else if(msgid==msgid::UPDATE_USER)
     {
-        QJsonArray ret=jsonObject["onlineuser"].toArray();
-        emit updateUserLists(ret);
+        emit updateUserLists(jsonObject);
+    }
+    else if(msgid==msgid::GROUPCHAT_RESPONE)
+    {
+        emit groupChatRes(jsonObject);
     }
 }
 
+void tcpclient::writeLogMessage(const QString &logMessage) {
+    // 定义日志文件的路径
+    QString logFilePath = "application.log";
 
+    // 打开文件
+    QFile logFile(logFilePath);
+    if (logFile.open(QIODevice::Append | QIODevice::Text)) {
+        QTextStream out(&logFile);
 
+        // 获取当前时间
+        QString currentDateTime = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
+        // 写入日志信息
+        out << currentDateTime << " - " << logMessage << "\n";
 
+        // 刷新并关闭文件
+        out.flush();
+        logFile.close();
 
+        qDebug() << "Log message written to" << logFilePath;
+    } else {
+        qCritical() << "Failed to open log file:" << logFilePath;
+    }
+}
 

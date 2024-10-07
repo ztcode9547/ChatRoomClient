@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_loginWidget_t {
     QByteArrayData data[11];
-    char stringdata0[148];
+    char stringdata0[140];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,18 +36,18 @@ QT_MOC_LITERAL(1, 12, 24), // "loginWidget_to_regWidget"
 QT_MOC_LITERAL(2, 37, 0), // ""
 QT_MOC_LITERAL(3, 38, 10), // "singalType"
 QT_MOC_LITERAL(4, 49, 25), // "loginWidget_to_chatWidget"
-QT_MOC_LITERAL(5, 75, 10), // "onlineuser"
-QT_MOC_LITERAL(6, 86, 11), // "toRegWidget"
-QT_MOC_LITERAL(7, 98, 12), // "showTipLabel"
-QT_MOC_LITERAL(8, 111, 11), // "launchLogin"
-QT_MOC_LITERAL(9, 123, 11), // "loginHandle"
-QT_MOC_LITERAL(10, 135, 12) // "loginMessage"
+QT_MOC_LITERAL(5, 75, 2), // "js"
+QT_MOC_LITERAL(6, 78, 11), // "toRegWidget"
+QT_MOC_LITERAL(7, 90, 12), // "showTipLabel"
+QT_MOC_LITERAL(8, 103, 11), // "launchLogin"
+QT_MOC_LITERAL(9, 115, 11), // "loginHandle"
+QT_MOC_LITERAL(10, 127, 12) // "loginMessage"
 
     },
     "loginWidget\0loginWidget_to_regWidget\0"
     "\0singalType\0loginWidget_to_chatWidget\0"
-    "onlineuser\0toRegWidget\0showTipLabel\0"
-    "launchLogin\0loginHandle\0loginMessage"
+    "js\0toRegWidget\0showTipLabel\0launchLogin\0"
+    "loginHandle\0loginMessage"
 };
 #undef QT_MOC_LITERAL
 
@@ -76,7 +76,7 @@ static const uint qt_meta_data_loginWidget[] = {
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
-    QMetaType::Void, QMetaType::QJsonArray,    5,
+    QMetaType::Void, QMetaType::QJsonObject,    5,
 
  // slots: parameters
     QMetaType::Void,
@@ -94,7 +94,7 @@ void loginWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->loginWidget_to_regWidget((*reinterpret_cast< const int(*)>(_a[1]))); break;
-        case 1: _t->loginWidget_to_chatWidget((*reinterpret_cast< const QJsonArray(*)>(_a[1]))); break;
+        case 1: _t->loginWidget_to_chatWidget((*reinterpret_cast< const QJsonObject(*)>(_a[1]))); break;
         case 2: _t->toRegWidget(); break;
         case 3: _t->showTipLabel((*reinterpret_cast< const int(*)>(_a[1]))); break;
         case 4: _t->launchLogin(); break;
@@ -111,7 +111,7 @@ void loginWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
             }
         }
         {
-            using _t = void (loginWidget::*)(const QJsonArray );
+            using _t = void (loginWidget::*)(const QJsonObject );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&loginWidget::loginWidget_to_chatWidget)) {
                 *result = 1;
                 return;
@@ -168,7 +168,7 @@ void loginWidget::loginWidget_to_regWidget(const int _t1)
 }
 
 // SIGNAL 1
-void loginWidget::loginWidget_to_chatWidget(const QJsonArray _t1)
+void loginWidget::loginWidget_to_chatWidget(const QJsonObject _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);

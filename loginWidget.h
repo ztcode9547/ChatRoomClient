@@ -17,7 +17,7 @@ public:
     ~loginWidget();
 signals:
     void loginWidget_to_regWidget(const int singalType);
-    void loginWidget_to_chatWidget(const QJsonArray onlineuser);
+    void loginWidget_to_chatWidget(const QJsonObject js);
 private:
     Ui::Widget *ui;
 private slots:
